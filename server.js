@@ -48,7 +48,7 @@ socket.addListener('connection', function(conn){
   });
 });
 
-socket.addListener('close', function(conn){
+socket.addListener('disconnected', function(conn){
   connected--;
   socket.broadcast('User left, connected now: ' + connected);
 });
