@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.3))) fixed center;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center;
 }
 
 body:after {
@@ -80,15 +80,6 @@ input { padding: 0.382em; border: 1px solid #ccc; }
   content: '\00BB  ';
 }
 
-#docs {
-  counter-reset: steps;
-}
-
-#docs h2:before {
-  content: counter(steps) ". "; 
-  counter-increment: steps;
-}
-
 @media all and (min-width: 800px) {
   body {
     position: relative;
@@ -115,6 +106,15 @@ input { padding: 0.382em; border: 1px solid #ccc; }
     margin-left: 520px;
   }
 
+  #docs {
+    counter-reset: steps;
+  }
+
+  #docs h2:before {
+    content: counter(steps) ". "; 
+    counter-increment: steps;
+  }
+
   footer {
     clear: left;
     display: block;
@@ -133,8 +133,9 @@ input { padding: 0.382em; border: 1px solid #ccc; }
     position: absolute;
     right: 1em;
     content: 'latest';
-    padding: 0.146em 0.213em;
+    padding: 0.146em 0.618em;
     background: rgba(0,0,0,0.1);
+    border-radius: 1em;
   }
 }
 
