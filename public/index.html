@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>testyoursockets.com</title>
+<meta id="meta" name="viewport" content="width=device-width; height=device-height; user-scalable=no; initial-scale=1.0" />
 <link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'>
 <style>
 
@@ -58,14 +59,24 @@ input { padding: 0.382em; border: 1px solid #ccc; }
 #output li { margin: 0; padding: 0 1em; }
 #output li:first-child {
   margin-top: 0;
-  padding-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  background: rgba(0,0,0,0.1);
+  position: relative;
+}
+
+#output li:first-child:after {
+  position: absolute;
+  right: 1em;
+  content: 'latest';
+  padding: 0.146em 0.213em;
+  background: rgba(0,0,0,0.1);
 }
 
 #output li:last-child {
-  padding: 1em;
-  margin: 1em 0;
-  margin-bottom: 0;
-  background: rgba(0,0,0,0.1);
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-top: 0;
 }
 
 #liveexample ul {
@@ -253,8 +264,11 @@ function simpleTimestamp() {
 function log(str) {
   var li = document.createElement('li');
   li.appendChild(document.createTextNode('[' + simpleTimestamp() + '] ' + str));
-  output.appendChild(li);
-  output.scrollTop = output.scrollHeight; // scroll to end
+  if (output.firstChild) {
+    output.insertBefore(li, output.firstChild);
+  } else {
+    output.appendChild(li);  
+  }
 }
 
 function connect() {
