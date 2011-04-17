@@ -256,7 +256,7 @@ function log(str) {
 
 function connect() {
   log('Connecting...');
-  socket = new WebSocket('ws://localhost:8000');
+  socket = new WebSocket('ws://' + location.host);
 
   socket.onopen = function () {
     log('Connected');
@@ -267,12 +267,12 @@ function connect() {
   };
 
   socket.onmessage = function (event) { 
-    log('Message: ' + event.data);
+    log('\u00BB ' + event.data);
   };
 
   message.form.onsubmit = function () {
     if (socket.readyState == 1) {
-      log('Sending: "' + message.value + '"');
+      log('\u00AB "' + message.value + '"');
       socket.send(message.value);
       window.location.hash = this.id;
     }

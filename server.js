@@ -40,20 +40,17 @@ socket.addListener('listening', function(){
 
 // Handle WebSocket Requests
 socket.addListener('connection', function(conn){
-  console.log('CONNECTION!');
   socket.send(conn.id, connected+'');
-  socket.broadcast(connected+'');
+  socket.broadcast('Connected users: ' + connected);
   
   conn.addListener('message', function(message){
-    console.log('MESSAGE IN!');
     socket.broadcast(message);
   });
 });
 
 socket.addListener('close', function(conn){
   connected--;
-  console.log('CLOSED!');
-  conn.broadcast(connected+'');
+  socket.broadcast('User left, connected now: ' + connected);
 });
 
 console.log('Listening on ' + (process.ARGV[2] || 80));
