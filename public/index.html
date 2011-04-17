@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>testyoursockets.com</title>
+<!-- <link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'> -->
+<style>
+
+html {
+  background: url(images/bg.gif);
+  color: #e1e1e1;
+}
+
+body {
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.3))) fixed center;
+}
+
+body:after {
+  content: '.';
+  display: block;
+  opacity: 0;
+}
+
+* { font-family: 'helvetica neue', arial, sans-serif; margin: 0; padding: 0; font-size: 1em; line-height: 1.459em; }
+
+h1, h2 { font-family: 'Coda', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); line-height: 1.459em; }
+
+h1 { font-size: 2.361em; text-align: center; background: rgba(0,0,0,0.4); padding: 0.557em; border-bottom: 1px solid rgba(0,0,0,0.2); margin-bottom: 1em; }
+h2 { font-size: 1.618em; line-height: 1.459em; }
+section { width: 90%; margin: 0 auto; }
+li { list-style: none; margin: 0; padding: 0; }
+p { margin: 1.459em 0; line-height: 1.459em; }
+pre { padding: 1.459em; margin: 0; background: rgba(255, 255, 255, 0.2); text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
+code { font-size: 0.902em; font-family: menlo, consolas, monospace; line-height: 1.459em; }
+pre code { display: block; overflow: auto; }
+pre code { padding-bottom: 0.7295em; }
+pre { padding-bottom: 0.7295em; }
+a { color: #fff; font-weight: bold; padding: 1px; }
+a:hover { background-color: #fff; color: #d12250; text-decoration: none; }
+li:first-child {
+  margin-top: 0;
+}
+
+#docs li {
+  margin: 0.618em 0;
+}
+
+form {
+  margin: 1.459em 0;
+}
+
+form ul { 
+  margin-top: 1.459em;
+}
+
+input { padding: 0.382em; border: 1px solid #ccc; }
+
+#output { border: 1px solid #000; border: 1px solid rgba(0,0,0,0.2); }
+#output li { margin: 0; padding: 0 1em; }
+#output li:first-child {
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+#output li:last-child {
+  padding: 1em;
+  margin: 1em 0;
+  margin-bottom: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+#liveexample ul {
+  max-height: 350px;
+  overflow: auto;
+}
+
+#docs li:before {
+  content: '\00BB  ';
+}
+
+#docs {
+  counter-reset: steps;
+}
+
+#docs h2:before {
+  content: counter(steps) ". "; 
+  counter-increment: steps;
+}
+
+@media all and (min-width: 800px) {
+  body {
+    position: relative;
+  }
+  
+  h1 {
+    margin-bottom: 0;
+  }
+  
+  section {
+    width: auto;
+    padding: 20px;
+    display: block;
+    float: left;
+    vertical-align: top;
+  }
+  
+  #liveexample {
+    width: 500px;
+  }
+  
+  #docs {
+    float: none;
+    margin-left: 520px;
+  }
+
+  footer {
+    clear: left;
+    display: block;
+  }
+  
+  footer div {
+    float: left;
+    width: 50%;
+  }
+  
+  footer div > * {
+    padding: 0 20px;
+  }
+}
+
+
+
+/* Shamelessly stolen from maxvoltar.com, which in turn was shamelessly stolen from chatrboxapp.com. */
+
+body *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+body *::-webkit-scrollbar-button:start:decrement,
+body *::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 0px;
+    width: 0px;
+}
+
+body *::-webkit-scrollbar-button:horizontal:increment {
+    background-color: #fff;
+    background: transparent;
+}
+
+body *::-webkit-scrollbar-track {
+    -webkit-border-radius: 3px;
+}
+
+body *::-webkit-scrollbar-track-piece {
+    -webkit-border-radius: 3px;
+}
+
+body *::-webkit-scrollbar-thumb:horizontal {
+  width: 50px;
+  background-color: rgba(0,0,0,0.4);
+  -webkit-border-radius: 3px;
+}
+
+body *::-webkit-scrollbar-thumb:vertical {
+  width: 50px;
+  background-color: rgba(0,0,0,0.4);
+  -webkit-border-radius: 3px;
+}
+
+/*body *:hover::-webkit-scrollbar-thumb:horizontal,
+body *:hover::-webkit-scrollbar-thumb:vertical {
+  background-color: #d12250;
+}
+
+body *::-webkit-scrollbar-thumb:horizontal:hover,
+body *::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: #d12250;
+}
+*/
+/*body *::-webkit-scrollbar-thumb:horizontal:active,
+body *::-webkit-scrollbar-thumb:vertical:active, 
+body *::-webkit-scrollbar-thumb:horizontal:focus,
+body *::-webkit-scrollbar-thumb:vertical:focus {
+  background-color: #d12250;
+}
+*/
+/* @end */
+
+/*#liveexample { float: left; margin-left: 1%; width: 48%; border: 1px solid #ccc; position: relative; }
+#liveexample > * { margin: 20px; }
+textarea { padding: 10px; display: block; width: 85%; height: 100px; position: relative; }
+#liveexample ul { list-style: none; height: 400px; overflow: auto; }
+#liveexample li { margin: 10px 0; }
+#docs { margin-left: 51%; margin-right: 1%; width: 48%; border: 1px solid #ccc; }
+#docs { font-size: 12px; }
+#docs > * { margin: 20px; }
+#docs h2 { margin: 14px 20px; }
+#docs p { margin: 14px 20px; }
+#docs .col { width: 50%; }
+#docs .left { float: left; width: 49%; }
+#docs .right { margin-left: 49%; }
+#docs .right:after {
+  content: '.';
+  visibility: 'hidden';
+  clear: both;
+  height: 1%;
+}
+*/</style>
+</head>
+<body>
+<h1>Test Your Sockets</h1>
+<section id="liveexample">
+  <!-- code area -->
+  <pre><code>var output = document.getElementById('output');
+function message(str) {
+  var li = document.createElement('li');
+  output.appendChild(li.appendChild(document.createTextNode(str)));
+  output.scrollTop = output.scrollHeight; // scroll to end
+}
+
+var socket = new WebSocket('ws://testyoursockets.com');
+
+socket.onopen = function () {
+  message('Connected');
+};
+
+socket.onmessage = function (event) { 
+  message('Message: ' + event.data);
+}</code></pre>
+
+<form id="sender">
+  <input placeholder="send a test message" id=message>
+  <input type=submit value=Send>
+  <ul id="output"></ul>
+</form>
+<script>
+var output = document.getElementById('output'),
+    message = document.getElementById('message');
+
+function two(s) {
+  return (s+'').length < 2 ? '0' + s : s;
+}
+
+function simpleTimestamp() {
+  var date = new Date();
+  return [two(date.getHours()), two(date.getMinutes()), two(date.getSeconds())].join(':');
+}
+
+function log(str) {
+  var li = document.createElement('li');
+  li.appendChild(document.createTextNode('[' + simpleTimestamp() + '] ' + str));
+  output.appendChild(li);
+  output.scrollTop = output.scrollHeight; // scroll to end
+}
+
+function connect() {
+  log('Connecting...');
+  socket = new WebSocket('ws://localhost:8000');
+
+  socket.onopen = function () {
+    log('Connected');
+  };
+
+  socket.onclose = function () {
+    log('Connection closed - attempting to reopen...');
+  };
+
+  socket.onmessage = function (event) { 
+    log('Message: ' + event.data);
+  };
+
+  message.form.onsubmit = function () {
+    if (socket.readyState == 1) {
+      log('Sending: "' + message.value + '"');
+      socket.send(message.value);
+      window.location.hash = this.id;
+    }
+    message.value = '';
+    return false;
+  };  
+}
+
+var socket;
+connect();
+
+</script>
+</section>
+<section id="docs">
+  <!-- information area -->
+  <h2>Here's a server for you to experiment with</h2>
+  <p>Type a message in the box on the right and watch your message be distributed to every who is connected. Also, if you fancy some command line action, you can post a message directly from your command line and it will be pushed to this web page in real time - give it a try using this:</p>
+  <pre><code>curl --data="Hello world" http://testyoursockets.com</code></pre>
+  <p>You can also create your own web page to connect to this WebSocket example and other people will see your messages come in.</p>
+  <h2>Creating your own server</h2>
+  <p>This example is running using <a href="http://nodejs.org">Node.js</a> and if you want to give it a try I've uploaded the code for your helping. <a href="#">Grab it from github</a> and have a play and enjoy. Equally, you can use a server like <a href="http://twistedmatrix.com/trac/">Twisted</a> if Node isn't your cup of tea.</p>
+  <p><a href="#">Download the example server code</a></p>
+  <div class="col left">
+    <h2>Learning Resources</h2>
+    <ul>
+      <li><a href="http://nodejs.org">nodejs.org</a></li>
+      <li><a href="http://howtonode.org">howtonode.org</a></li>
+      <li><a href="http://html5doctor.org">html5doctor.com</a></li>
+      <li><a href="http://html5demos.org">html5demos.com</a></li>
+      <li><a href="http://forbind.net">forbind.net</a></li>
+    </ul>
+  </div>
+
+  <div class="col right">
+    <h2>Supported By</h2>
+    <ul>
+      <li><a href="http://html5doctor.com">HTML5 Doctor</a></li>
+      <li><a href="http://leftlogic.com">Left Logic</a></li>
+      <li><a href="http://forbind.net">F&ouml;rbind</a></li>
+    </ul>
+  </div>
+  </section>
+</body>
+</html>
