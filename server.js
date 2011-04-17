@@ -35,7 +35,7 @@ var socket = ws.createServer({
 });
 
 socket.addListener('listening', function(){
-  console.log('Listening for connections on ' + process.ARGV[2]);
+  console.log('Socket ready on ' + process.ARGV[2]);
 });
 
 // Handle WebSocket Requests
