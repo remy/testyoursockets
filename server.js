@@ -46,11 +46,11 @@ socket.addListener('connection', function(conn){
   conn.addListener('message', function(message){
     socket.broadcast(message);
   });
-});
 
-socket.addListener('disconnected', function(conn){
-  connected--;
-  socket.broadcast('User left, connected now: ' + connected);
+  conn.addListener('close', function(conn){
+    connected--;
+    socket.broadcast('User left, connected now: ' + connected);
+  });
 });
 
 console.log('Listening on ' + (process.ARGV[2] || 80));
