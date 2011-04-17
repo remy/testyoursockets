@@ -40,7 +40,7 @@ socket.addListener('listening', function(){
 
 // Handle WebSocket Requests
 socket.addListener('connection', function(conn){
-  socket.send(conn.id, connected+'');
+  connected++;
   socket.broadcast('Connected users: ' + connected);
   
   conn.addListener('message', function(message){
