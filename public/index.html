@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>testyoursockets.com</title>
-<!-- <link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'> -->
+<link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'>
 <style>
 
 html {
@@ -22,7 +22,7 @@ body:after {
 
 * { font-family: 'helvetica neue', arial, sans-serif; margin: 0; padding: 0; font-size: 1em; line-height: 1.459em; }
 
-h1, h2 { font-family: 'Coda', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); line-height: 1.459em; }
+h1, h2 { font-family: 'Coda', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); line-height: 1.459em; color: #fff; }
 
 h1 { font-size: 2.361em; text-align: center; background: rgba(0,0,0,0.4); padding: 0.557em; border-bottom: 1px solid rgba(0,0,0,0.2); margin-bottom: 1em; }
 h2 { font-size: 1.618em; line-height: 1.459em; }
@@ -167,46 +167,7 @@ body *::-webkit-scrollbar-thumb:vertical {
   background-color: rgba(0,0,0,0.4);
   -webkit-border-radius: 3px;
 }
-
-/*body *:hover::-webkit-scrollbar-thumb:horizontal,
-body *:hover::-webkit-scrollbar-thumb:vertical {
-  background-color: #d12250;
-}
-
-body *::-webkit-scrollbar-thumb:horizontal:hover,
-body *::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: #d12250;
-}
-*/
-/*body *::-webkit-scrollbar-thumb:horizontal:active,
-body *::-webkit-scrollbar-thumb:vertical:active, 
-body *::-webkit-scrollbar-thumb:horizontal:focus,
-body *::-webkit-scrollbar-thumb:vertical:focus {
-  background-color: #d12250;
-}
-*/
-/* @end */
-
-/*#liveexample { float: left; margin-left: 1%; width: 48%; border: 1px solid #ccc; position: relative; }
-#liveexample > * { margin: 20px; }
-textarea { padding: 10px; display: block; width: 85%; height: 100px; position: relative; }
-#liveexample ul { list-style: none; height: 400px; overflow: auto; }
-#liveexample li { margin: 10px 0; }
-#docs { margin-left: 51%; margin-right: 1%; width: 48%; border: 1px solid #ccc; }
-#docs { font-size: 12px; }
-#docs > * { margin: 20px; }
-#docs h2 { margin: 14px 20px; }
-#docs p { margin: 14px 20px; }
-#docs .col { width: 50%; }
-#docs .left { float: left; width: 49%; }
-#docs .right { margin-left: 49%; }
-#docs .right:after {
-  content: '.';
-  visibility: 'hidden';
-  clear: both;
-  height: 1%;
-}
-*/</style>
+</style>
 </head>
 <body>
 <h1>Test Your Sockets</h1>
@@ -290,11 +251,11 @@ connect();
   <!-- information area -->
   <h2>Here's a server for you to experiment with</h2>
   <p>Type a message in the box on the right and watch your message be distributed to every who is connected. Also, if you fancy some command line action, you can post a message directly from your command line and it will be pushed to this web page in real time - give it a try using this:</p>
-  <pre><code>curl --data="Hello world" http://testyoursockets.com</code></pre>
+  <pre><code>curl --data "Hello world" http://testyoursockets.com/test</code></pre>
   <p>You can also create your own web page to connect to this WebSocket example and other people will see your messages come in.</p>
   <h2>Creating your own server</h2>
-  <p>This example is running using <a href="http://nodejs.org">Node.js</a> and if you want to give it a try I've uploaded the code for your helping. <a href="#">Grab it from github</a> and have a play and enjoy. Equally, you can use a server like <a href="http://twistedmatrix.com/trac/">Twisted</a> if Node isn't your cup of tea.</p>
-  <p><a href="#">Download the example server code</a></p>
+  <p>This example is running using <a href="http://nodejs.org">Node.js</a> and if you want to give it a try I've uploaded the code for your helping. <a href="https://github.com/remy/testyoursockets">Grab it from github</a> and have a play and enjoy. Equally, you can use a server like <a href="http://twistedmatrix.com/trac/">Twisted</a> if Node isn't your cup of tea.</p>
+  <p><a href="https://github.com/remy/testyoursockets/zipball/master">Download the example server code</a></p>
   <div class="col left">
     <h2>Learning Resources</h2>
     <ul>
@@ -302,7 +263,6 @@ connect();
       <li><a href="http://howtonode.org">howtonode.org</a></li>
       <li><a href="http://html5doctor.org">html5doctor.com</a></li>
       <li><a href="http://html5demos.org">html5demos.com</a></li>
-      <li><a href="http://forbind.net">forbind.net</a></li>
     </ul>
   </div>
 
