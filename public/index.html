@@ -289,11 +289,13 @@ function connect() {
 
   message.form.onsubmit = function () {
     if (socket.readyState == 1) {
-      log('\u00AB "' + message.value + '"');
+      log('\u00AB ' + message.value);
       socket.send(message.value);
       window.location.hash = this.id;
+      message.value = '';
+    } else {
+      log('Socket not connected yet');
     }
-    message.value = '';
     return false;
   };  
 }
