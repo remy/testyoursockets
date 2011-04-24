@@ -1,31 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8" /> 
 <title>testyoursockets.com</title>
+<!--
+  Hello and welcome to the sauce.
+
+  Although this microsite is primarily about WebSockets JavaScript code and Node.js code, this
+  particular source code that you're about to browse makes some rather good use of CSS3...if
+  I don't say so myself ::narf-narf::
+
+  Anywhoo, if you pootle along through this code, I've left you a few tasty morsells of titbits
+  to explain what I've done, and why I've done it - like the multiple backgrounds...yep, that 
+  was fun trying to debug :)
+
+  So, trot along now, and I'll see you at the end.
+
+  - @rem
+-->
 <meta id="meta" name="viewport" content="width=device-width; height=device-height; initial-scale=1.0" />
-<link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'>
+
+<!--
+  I'm really starting to be impressed with Google's list of available fonts. The list is 
+  definitely getting bigger. I tested a bunch of fonts out there, and this definitely reached 
+  out to me and said: "LOVE ME, I AM THE LEET FONT DAT YOO IS LOOKING FOR, IN-IT"...or something.
+
+  Anyway, check their fonts out: http://www.google.com/webfonts
+-->
+<link href='http://fonts.googleapis.com/css?family=Arvo:bold' rel='stylesheet' type='text/css'>
 <style>
 
 html {
+  /*
+  Okay, so you're thinking possibly, what the fuck is Remy doing here? That's fair.
+
+  Here's what I wanted: a simple repeating background with a slight vignette. Too much to ask
+  for? Not with my good buddies CSS3 & friends, it's not.
+
+  First up, I'm using some pink background colour (#920A30) with a background url. That url is 
+  a dataurl - ie. a text representation of the image. Pop that bad boy in a browser window and
+  you'll see what the browser is actually rendering.
+
+  For browsers without dataurl support, we're talking to you Mr IE6, they'll just see the solid
+  background, whereas IE7 will see the pattern background.
+
+  Great, moving on to the next background property, I'm using multiple backgrounds, which IE-pre-8
+  (I think...) will ignore. 
+
+  The multiple background gives me the ability to set a radial gradient (only supported in FF and
+  WebKit for now, but I've had a guess as to the syntax for Opera and IE). That radial gradient
+  is the vignette. It starts at transparent (in the centre) and goes out to black with 0.4 opacity.
+  Then, that's laid over my dataurl - creating the vignette effect.
+
+  The gradient tool I use, because frankly remembering all these different arguments for gradients
+  is a pain in the backside, is John Allsopp's toolshed of tools: http://westciv.com/tools/radialgradients/
+
+  */
   background: #920A30 url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -o-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -ms-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -moz-radial-gradient(50% 50% 0deg,circle cover, rgba(0,0,0,0), rgba(0,0,0,0.4)) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
   color: #e1e1e1;
   height: 100%;
 }
 
-body {
-}
-
-body:after {
-  content: '.';
-  display: block;
-  opacity: 0;
-}
-
 * { font-family: 'helvetica neue', arial, sans-serif; margin: 0; padding: 0; font-size: 1em; line-height: 1.459em; }
 
-h1, h2 { font-family: 'Coda', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); line-height: 1.459em; color: #fff; }
+/* 
+  Sprinkling a bit of Web Fonts thanks to Google :)
+  I'm also doing a bit of a Web 2.0 sheep move: multiple text shadows. I know, I should hang
+  my head in shame. 
 
+  Instead of a simple shadow, I've double the text shadow up, giving it a deeper, and darker
+  shadow on the h1 and h2 - just to give it more "pop" (BINGO!).
+
+  You might have also noticed odd numbers in my line-heights by now. That's thanks to 
+  http://modularscale.com - I stuck some numbers in there and I'm trying to follow the patterns
+  it generated for me. I'm not typography pro, or in fact, I'm not really anything typography,
+  but I like to try. The link above also includes a video to explain, definitely worth checking out.
+*/
+h1, h2 { font-family: 'Arvo', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5), 2px 2px 1px rgba(0,0,0,0.5); line-height: 1.459em; color: #fff; }
+
+/*
+  You've seen it already, but I'm also using rgba (notice the 'a') - that's RGB with alpha transparency.
+  Pretty simple really, the alpha transparency is just 0 to 1 - as you'd expect. 
+
+  CSS3 colours module is definitely cool and you'll see my use of hsl a little later on.
+*/
 h1 { font-size: 2.361em; text-align: center; background: rgba(0,0,0,0.4); padding: 0.557em; border-bottom: 1px solid rgba(0,0,0,0.2); margin-bottom: 1em; }
 h2 { font-size: 1.618em; line-height: 1.459em; }
 section { width: 90%; margin: 0 auto; }
@@ -36,7 +98,7 @@ code { font-size: 0.902em; font-family: menlo, consolas, monospace; line-height:
 pre code { display: block; overflow: auto; }
 pre code { padding-bottom: 0.7295em; }
 pre { padding-bottom: 0.7295em; }
-a { color: #fff; font-weight: bold; padding: 1px; }
+a { color: #fff; font-weight: normal; padding: 1px; }
 a:hover { background-color: #fff; color: #d12250; text-decoration: none; }
 li:first-child {
   margin-top: 0;
@@ -81,6 +143,19 @@ input { padding: 0.382em; border: 1px solid #ccc; }
   content: '\00BB  ';
 }
 
+/*
+  So up until this point (or rather without the media query) the whole site works just fine. I've 
+  assumed you're on a narrow device and styled my content to that form until now. And now, we've hit
+  a media query which is going to give me a two column view if the page is 800px or wider.
+
+  Now, IE6, for instance, doesn't support media queries. Does my site still work? Yes. Does it appear
+  fully and perhaps, let's say, exactly the same as a brand spanking new iPhone 4? Yes. So this is
+  just for newer browsers and I just style it more to the device capability - i.e. big screen.
+
+  It's not much, but this approach is based on the ideas that Bryan Rieger was talking about in his
+  slides: http://www.slideshare.net/bryanrieger/rethinking-the-mobile-web-by-yiibu (note: I didn't
+  see the talk, just that the slides have tons of info in them).
+*/
 @media all and (min-width: 800px) {
   body {
     position: relative;
@@ -108,6 +183,19 @@ input { padding: 0.382em; border: 1px solid #ccc; }
     margin-left: 540px;
   }
 
+  /*
+    Ah, generated content in CSS, gotta love it.
+    We've got a counter called "steps" (not based on the ground, mind).
+
+    We reset the counter when the parser encounters the #docs element.
+
+    Then, when we encounter an h2, we put the counter value before the h2 (as seen in the next
+    block of CSS) and directly after, we increment the counter. 
+
+    This effect means that if our page is wider than 800px (remember the media query?), and the
+    browser supports CSS counter generated content, it'll put a number before each h2 inside
+    the #docs element. Neat eh?
+  */
   #docs {
     counter-reset: steps;
   }
@@ -151,6 +239,22 @@ input { padding: 0.382em; border: 1px solid #ccc; }
   border: 1px solid rgba(0,0,0,0.5);
 }
 
+/*
+  This CSS comes from http://ubuwaits.github.com/css3-buttons/ except I've tweaked it, and this is where
+  the strength of CSS3 colours module comes in via the form of HSL (Hue Saturation and Light).
+
+  The default CSS for the "clean gray" button was, well, gray. I wanted it pink. So I went about replacing
+  every hex colour (like #ccc, #eee, #aaa, etc) with the hsl value (I used this: 
+  http://www.workwithcolor.com/hsl-color-schemer-01.htm nothing special). So #ccc becomes hsl(0, 0%, 80%).
+
+  Now, the big win with hsl is that if I want to go from green to blue, I just change the hue. Since 
+  we were working in grays, often the saturation was right down, so I switched it to 100%. Then, to go
+  from gray, I simply changed the hue value, from 0 (when gray) to 322 (about pinkish), which then gave
+  me the same amount of colour difference in the shadows and borders, except the whole thing was pink
+  instead of gray.
+
+  So yeah, hsl, it's the shiznik.
+*/
 input[type=submit] {
   background: hsl(322,100%,93%);
   background: -moz-linear-gradient(top, hsl(322,100%,93%) 0%, hsl(322,100%,80%) 100%);
@@ -190,7 +294,28 @@ input[type=submit]:active {
   box-shadow: inset 0 0 5px 2px hsl(322,100%,67%), 0 1px 0 0 hsl(322,100%,93%);
 }
 
-/* Shamelessly stolen from elliotkember, which is turn was shamelessly stolen from maxvoltar.com, which in turn was shamelessly stolen from chatrboxapp.com. */
+/*
+  Shamelessly stolen from elliotkember, which is turn was shamelessly stolen from 
+  maxvoltar.com, which in turn was shamelessly stolen from chatrboxapp.com.
+
+  (note: this comment was mostly, shamelessly stolen from Elliot's shameless comment).
+
+  Yeah, I stole this from Elliot. No biggie. 
+
+  http://forrst.com/posts/Remember_when_custom_scrollbars_were_all_the_rag-7fa
+
+  In fact, his code actually excludes some of the important style - in particular, 
+  Elliot's site has a right hand margin between the scroll bar and the window edge. 
+  The adjustment is that for his site, he sets a position absolute on the body element
+  then puts a right position of 10px - which is what creates the margin. 
+
+  So in this code, I'm setting my scrollbar to anything that overflows *inside*
+  the body element, and above (around the 'pre' element, you'll find that the overflow
+  is on the 'code' element, and the margin for my custom scrollbar is on the 'pre'
+  element). Basically: a lot of hoop jumping for something a little bit lame.
+
+  Sorry folks.
+*/
 
 body *::-webkit-scrollbar {
     width: 6px;
@@ -271,46 +396,85 @@ function simpleTimestamp() {
   return [two(date.getHours()), two(date.getMinutes()), two(date.getSeconds())].join(':');
 }
 
+// This is a simple log function. Actually, by doing "real" DOM scripting
+// I'm not having to worry too much about script injection (he says before
+// really releasing it and accidentally injecting lots of script in to people's
+// viewing pleasure...) - but annnyway - what we're doing is creating a 
+// text node, as in the DOM node with the nodeType of '#text'. Remember them?
+// Since I'm using that function instead of innerHTML, it's doing a bit of
+// the cleansing for me.
 function log(str) {
   var li = document.createElement('li');
   li.appendChild(document.createTextNode('[' + simpleTimestamp() + '] ' + str));
+  // If there's already a firstChild element (i.e. log output), prepend
+  // this new element, so that the list keeps prepending to the top.
   if (output.firstChild) {
     output.insertBefore(li, output.firstChild);
   } else {
-    output.appendChild(li);  
+    output.appendChild(li);
   }
 }
 
 function connect() {
   log('Connecting...');
+  // I'm connecting to location.host so that other folks can fork this project
+  // and it will still connect to the right domain
   socket = new WebSocket('ws://' + location.host);
+
+  // Note that once a socket closes, it can't be reopened, which is why this
+  // whole connect & create event handlers code is inside the connect function.
+  // So when the connection is dropped, the onclose is called, and the 
+  // reconnect starts to happen.
 
   socket.onopen = function () {
     log('Connected');
+    document.title = '[connected] - testyoursockets.com';
   };
 
   socket.onclose = function () {
     log('Connection closed - attempting to reopen...');
+    document.title = '[disconnected] - testyoursockets.com';
+
+    // When the connect closes, it automatically tries to reconnect, but we're
+    // doing it less and less frequently. If something is dropping connections
+    // quickly, it's likely I'll want it to back off - which this is doing
+    // in a rather overly simplistic way (but it'll do for this example).
+    setTimeout(connect, reconnectTimeout * 1000);
+    reconnectTimeout *= 2;
   };
 
-  socket.onmessage = function (event) { 
+  socket.onmessage = function (event) {
+    // Converts the %20 to spaces, etc on the decodeURIComponent
     log('\u00BB ' + decodeURIComponent(event.data));
   };
 
   message.form.onsubmit = function () {
+    // readyState == 1 means the connection is open, so the message can be sent.
+    // Otherwise, just notify the user that we're not ready yet. Cleverly, 
+    // WebSockets don't throw any exceptions if you try to send when the socket
+    // isn't open - so you want to make sure you know the state before actually
+    // sending on the socket.
     if (socket.readyState == 1) {
       log('\u00AB ' + message.value);
       socket.send(message.value);
+      // We could actually change the entire URL here, making use of 
+      // history.pushSate, and changing the url to '/test?' + their message.
+      // That would be neat, but I decided not to bother just for this little 
+      // demo. Instead, we just jump the window to the form we used to post with.
       window.location.hash = this.id;
       message.value = '';
     } else {
       log('Socket not connected yet');
     }
+
+    // Then I'm stopping the form from *actually* submitting anything, and 
+    // preventing the page from reloading.
     return false;
-  };  
+  };
 }
 
-var socket;
+var socket,
+    reconnectTimeout = 1;
 connect();
 
 </script>
@@ -325,6 +489,7 @@ connect();
   <h2>Creating your own server</h2>
   <p>This example is running using <a href="http://nodejs.org">Node.js</a> and if you want to give it a try I've uploaded the code for your helping. <a href="https://github.com/remy/testyoursockets">Grab it from github</a> and have a play and enjoy. Equally, you can use a server like <a href="http://twistedmatrix.com/trac/">Twisted</a> if Node isn't your cup of tea.</p>
   <p><a href="https://github.com/remy/testyoursockets/zipball/master">Download the example server code</a></p>
+  <!-- I'm not made on these class names, maybe they should have been "resources" and "supportedBy", but by this point, I really didn't care about that minutia detail -->
   <div class="col left">
     <h2>Learning Resources</h2>
     <ul>
@@ -344,5 +509,22 @@ connect();
     </ul>
   </div>
   </section>
+<!--
+  Well hello there. How was it? Make your way through the code okay? I hope so, this 
+  code certainly wasn't designed to confused you at least. 
+
+  If you've got any questions about it, or in fact if you fancy yourself a bit of badass
+  ninja type and you've found yourself a bug and have the fix in your fist ready to
+  throw towards me (or if you just have the bug, but not the fix) you can help pop
+  yourself along to the issues page: http://github.com/remy/testyoursockets/issues
+
+  If you've got a general bit of cooing that you'd like to send my way, simply pop
+  a tweet along to @rem, no doubt I'll add it to my growing pile of coos. Eventually
+  I aim to build a small canoe made entirely of coos - but that's for another day.
+
+  Take care now.
+
+  - @rem
+-->
 </body>
 </html>
