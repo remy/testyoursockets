@@ -10,7 +10,7 @@
   particular source code that you're about to browse makes some rather good use of CSS3...if
   I do say so myself ::narf-narf::
 
-  Anywhoo, if you pootle along through this code, I've left you a few tasty morsels of titbits
+  Anywhoo, if you pootle along through this code, I've left you a few tasty morsel sized titbits
   to explain what I've done, and why I've done it - like the multiple backgrounds...yep, that 
   was fun trying to debug :)
 
@@ -31,8 +31,17 @@
 <style>
 
 html {
+  background: #920A30 url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.3))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -o-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.3))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  background: -ms-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.3))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  /* Yep, Firefox has a different format. Never really got to the bottom of that one... */
+  background: -moz-radial-gradient(50% 50% 0deg,circle cover, rgba(0,0,0,0), rgba(0,0,0,0.3)) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
+  color: #efefef;
+  height: 100%;
+  
   /*
-  Okay, so you're thinking possibly, what the fuck is Remy doing here? That's fair.
+  Okay, so you're thinking possibly, what the fuck was Remy doing there? That's fair.
 
   Here's what I wanted: a simple repeating background with a slight vignette. Too much to ask
   for? Not with my good buddies CSS3 & friends, it's not.
@@ -56,29 +65,22 @@ html {
   is a pain in the backside, is John Allsopp's toolshed of tools: http://westciv.com/tools/radialgradients/
 
   */
-  background: #920A30 url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
-  background: -o-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
-  background: -ms-gradient(radial, 50% 50%, 0, 50% 50%, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
-  background: -moz-radial-gradient(50% 50% 0deg,circle cover, rgba(0,0,0,0), rgba(0,0,0,0.4)) fixed center, url(data:image/gif;base64,R0lGODlhBgAGAIAAANcnW9EiUCH5BAAAAAAALAAAAAAGAAYAAAIKjB+gYJy9kEOmAAA7);
-  color: #e1e1e1;
-  height: 100%;
 }
 
 * { font-family: 'helvetica neue', arial, sans-serif; margin: 0; padding: 0; font-size: 1em; line-height: 1.459em; }
 
 /* 
   Sprinkling a bit of Web Fonts thanks to Google :)
-  I'm also doing a bit of a Web 2.0 sheep move: multiple text shadows. I know, I should hang
-  my head in shame. 
+  I'm also doing a bit of a Web 2.0 sheep move: multiple text shadows. I know, I should hang my head
+  in shame. 
 
-  Instead of a simple shadow, I've double the text shadow up, giving it a deeper, and darker
-  shadow on the h1 and h2 - just to give it more "pop" (BINGO!).
+  Instead of a simple shadow, I've double the text shadow up, giving it a deeper, and darker shadow 
+  on the h1 and h2 - just to give it more "pop" (BINGO!).
 
   You might have also noticed odd numbers in my line-heights by now. That's thanks to 
-  http://modularscale.com - I stuck some numbers in there and I'm trying to follow the patterns
-  it generated for me. I'm not typography pro, or in fact, I'm not really anything typography,
-  but I like to try. The link above also includes a video to explain, definitely worth checking out.
+  http://modularscale.com - I stuck some numbers in there and I'm trying to follow the patterns it 
+  generated for me. I'm not typography pro, or in fact, I'm not really anything typography, but I 
+  like to try. The link above also includes a video to explain, definitely worth checking out.
 */
 h1, h2 { font-family: 'Arvo', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,0.5), 2px 2px 1px rgba(0,0,0,0.5); line-height: 1.459em; color: #fff; }
 
@@ -88,7 +90,7 @@ h1, h2 { font-family: 'Arvo', arial, serif; text-shadow: 1px 1px 1px rgba(0,0,0,
 
   CSS3 colours module is definitely cool and you'll see my use of hsl a little later on.
 */
-h1 { font-size: 2.361em; text-align: center; background: rgba(0,0,0,0.4); padding: 0.557em; border-bottom: 1px solid rgba(0,0,0,0.2); margin-bottom: 1em; }
+h1 { font-size: 2.361em; text-align: center; background: rgba(0,0,0,0.4); padding: 0.557em 0; border-bottom: 1px solid rgba(0,0,0,0.2); }
 h2 { font-size: 1.618em; line-height: 1.459em; }
 section { width: 90%; margin: 0 auto; }
 li { list-style: none; margin: 0; padding: 0; }
@@ -134,14 +136,46 @@ input { padding: 0.382em; border: 1px solid #ccc; }
   padding-top: 0;
 }
 
+#liveexample {
+  margin-top: 1em; 
+}
+
 #liveexample ul {
-  max-height: 350px;
+  max-height: 17.942em;
   overflow: auto;
 }
 
 #docs li:before {
   content: '\00BB  ';
 }
+
+#docs {
+  padding-bottom: 20px;
+}
+
+.unsupported #sender {
+  display: none;
+}
+
+#unsupported {
+  display: none;
+}
+
+.unsupported #unsupported {
+  display: block;
+  background: #0c0;
+  padding: 0.618em 1em;
+  font-size: 0.902em;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0px -1px 0 #116D00;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* via HTML5 boilerplate, via @miketaylr */
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+
 
 /*
   So up until this point (or rather without the media query) the whole site works just fine. I've 
@@ -189,12 +223,12 @@ input { padding: 0.382em; border: 1px solid #ccc; }
 
     We reset the counter when the parser encounters the #docs element.
 
-    Then, when we encounter an h2, we put the counter value before the h2 (as seen in the next
-    block of CSS) and directly after, we increment the counter. 
+    Then, when we encounter an h2, we put the counter value before the h2 (as seen in the next block 
+    of CSS) and directly after, we increment the counter. 
 
-    This effect means that if our page is wider than 800px (remember the media query?), and the
-    browser supports CSS counter generated content, it'll put a number before each h2 inside
-    the #docs element. Neat eh?
+    This effect means that if our page is wider than 800px (remember the media query?), and the 
+    browser supports CSS counter generated content, it'll put a number before each h2 inside the 
+    #docs element. Neat eh?
   */
   #docs {
     counter-reset: steps;
@@ -240,18 +274,18 @@ input { padding: 0.382em; border: 1px solid #ccc; }
 }
 
 /*
-  This CSS comes from http://ubuwaits.github.com/css3-buttons/ except I've tweaked it, and this is where
-  the strength of CSS3 colours module comes in via the form of HSL (Hue Saturation and Light).
+  This CSS comes from http://ubuwaits.github.com/css3-buttons/ except I've tweaked it, and this is 
+  where the strength of CSS3 colours module comes in via the form of HSL (Hue Saturation and Light).
 
-  The default CSS for the "clean gray" button was, well, gray. I wanted it pink. So I went about replacing
-  every hex colour (like #ccc, #eee, #aaa, etc) with the hsl value (I used this: 
+  The default CSS for the "clean gray" button was, well, gray. I wanted it pink. So I went about 
+  replacing every hex colour (like #ccc, #eee, #aaa, etc) with the hsl value (I used this: 
   http://www.workwithcolor.com/hsl-color-schemer-01.htm nothing special). So #ccc becomes hsl(0, 0%, 80%).
 
   Now, the big win with hsl is that if I want to go from green to blue, I just change the hue. Since 
-  we were working in grays, often the saturation was right down, so I switched it to 100%. Then, to go
-  from gray, I simply changed the hue value, from 0 (when gray) to 322 (about pinkish), which then gave
-  me the same amount of colour difference in the shadows and borders, except the whole thing was pink
-  instead of gray.
+  we were working in grays, often the saturation was right down, so I switched it to 100%. Then, to 
+  go from gray, I simply changed the hue value, from 0 (when gray) to 322 (about pinkish), which then 
+  gave me the same amount of colour difference in the shadows and borders, except the whole thing was 
+  pink instead of gray.
 
   So yeah, hsl, it's the shiznik.
 */
@@ -295,8 +329,8 @@ input[type=submit]:active {
 }
 
 /*
-  Shamelessly stolen from elliotkember, which is turn was shamelessly stolen from 
-  maxvoltar.com, which in turn was shamelessly stolen from chatrboxapp.com.
+  Shamelessly stolen from elliotkember, which is turn was shamelessly stolen from maxvoltar.com, 
+  which in turn was shamelessly stolen from chatrboxapp.com.
 
   (note: this comment was mostly, shamelessly stolen from Elliot's shameless comment).
 
@@ -304,15 +338,15 @@ input[type=submit]:active {
 
   http://forrst.com/posts/Remember_when_custom_scrollbars_were_all_the_rag-7fa
 
-  In fact, his code actually excludes some of the important style - in particular, 
-  Elliot's site has a right hand margin between the scroll bar and the window edge. 
-  The adjustment is that for his site, he sets a position absolute on the body element
-  then puts a right position of 10px - which is what creates the margin. 
+  In fact, his code actually excludes some of the important style - in particular, Elliot's site has 
+  a right hand margin between the scroll bar and the window edge. The adjustment is that for his 
+  site, he sets a position absolute on the body element then puts a right position of 10px - which 
+  is what creates the margin. 
 
-  So in this code, I'm setting my scrollbar to anything that overflows *inside*
-  the body element, and above (around the 'pre' element, you'll find that the overflow
-  is on the 'code' element, and the margin for my custom scrollbar is on the 'pre'
-  element). Basically: a lot of hoop jumping for something a little bit lame.
+  So in this code, I'm setting my scrollbar to anything that overflows *inside* the body element, 
+  and above (around the 'pre' element, you'll find that the overflow is on the 'code' element, and 
+  the margin for my custom scrollbar is on the 'pre' element). Basically: a lot of hoop jumping for 
+  something a little bit lame.
 
   Sorry folks.
 */
@@ -354,9 +388,21 @@ body *::-webkit-scrollbar-thumb:vertical {
   -webkit-border-radius: 3px;
 }
 </style>
+<script>
+// This little snippet of code detects whether the browser has native support for WebSockets, if it
+// doesn't, it'll hide the sending form and set a flag so our code later on handles the lack of 
+// support properly.
+// Although I'd always suggest reading Introducing HTML5 over any other book :) Mark Pilgrim has
+// done a pretty damn good job at listing all the ways to detect functionaility and it's published
+// in his online, openly available copy of Dive into HTML5: http://diveintohtml5.org/everything.html
+var supported = !!!(document.documentElement.className = !window.WebSocket ? 'unsupported' : '');
+</script>
 </head>
 <body>
 <h1>Test Your Sockets</h1>
+<p id="unsupported">This web site uses WebSockets, looking at the technology that's natively 
+  available in this particular browser it doesn't look like you've got native support baked in. Sorry
+  no dice for you today :(</p>
 <section id="liveexample">
   <h2>Web Socket live testing</h2>
   <p>This is all the JavaScript you need to start using real-time messaging on your site today:</p>
@@ -396,18 +442,16 @@ function simpleTimestamp() {
   return [two(date.getHours()), two(date.getMinutes()), two(date.getSeconds())].join(':');
 }
 
-// This is a simple log function. Actually, by doing "real" DOM scripting
-// I'm not having to worry too much about script injection (he says before
-// really releasing it and accidentally injecting lots of script in to people's
-// viewing pleasure...) - but annnyway - what we're doing is creating a 
-// text node, as in the DOM node with the nodeType of '#text'. Remember them?
-// Since I'm using that function instead of innerHTML, it's doing a bit of
-// the cleansing for me.
+// This is a simple log function. Actually, by doing "real" DOM scripting I'm not having to worry too 
+// much about script injection (he says before really releasing it and accidentally injecting lots of 
+// script in to people's viewing pleasure...) - but annnyway - what we're doing is creating a text 
+// node, as in the DOM node with the nodeType of '#text'. Remember them? Since I'm using that function 
+// instead of innerHTML, it's doing a bit of the cleansing for me.
 function log(str) {
   var li = document.createElement('li');
   li.appendChild(document.createTextNode('[' + simpleTimestamp() + '] ' + str));
-  // If there's already a firstChild element (i.e. log output), prepend
-  // this new element, so that the list keeps prepending to the top.
+  // If there's already a firstChild element (i.e. log output), prepend this new element, so that the 
+  // list keeps prepending to the top.
   if (output.firstChild) {
     output.insertBefore(li, output.firstChild);
   } else {
@@ -475,7 +519,7 @@ function connect() {
 
 var socket,
     reconnectTimeout = 1;
-connect();
+supported && connect();
 
 </script>
 </section>
@@ -489,7 +533,10 @@ connect();
   <h2>Creating your own server</h2>
   <p>This example is running using <a href="http://nodejs.org">Node.js</a> and if you want to give it a try I've uploaded the code for your helping. <a href="https://github.com/remy/testyoursockets">Grab it from github</a> and have a play and enjoy. Equally, you can use a server like <a href="http://twistedmatrix.com/trac/">Twisted</a> if Node isn't your cup of tea.</p>
   <p><a href="https://github.com/remy/testyoursockets/zipball/master">Download the example server code</a></p>
-  <!-- I'm not made on these class names, maybe they should have been "resources" and "supportedBy", but by this point, I really didn't care about that minutia detail -->
+  <!-- 
+    I'm not made on these class names, maybe they should have been "resources" and "supportedBy", 
+    but by this point, I really didn't care about that minutia detail.
+  -->
   <div class="col left">
     <h2>Learning Resources</h2>
     <ul>
@@ -504,8 +551,8 @@ connect();
     <h2>Supported By</h2>
     <ul>
       <li><a href="http://html5doctor.com">HTML5 Doctor</a></li>
-      <li><a href="http://leftlogic.com">Left Logic</a></li>
-      <li><a href="http://forbind.net">F&ouml;rbind</a></li>
+      <li><a href="http://leftlogic.com">Left Logic</a> <!-- My company  ;-) ... which isn't many folks --></li>
+      <li><a href="http://forbind.net">F&ouml;rbind</a> <!-- My "WebSockets as a service", sign up for alpha access --></li>
     </ul>
   </div>
   </section>
@@ -522,18 +569,18 @@ connect();
   })();
 </script>
 <!--
-  Well hello there. How was it? Make your way through the code okay? I hope so, this 
-  code certainly wasn't designed to confused you at least. 
+  Well hello there. How was it? Make your way through the code okay? I hope so, this code certainly 
+  wasn't designed to confused you at least. 
 
-  If you've got any questions about it, or in fact if you fancy yourself a bit of badass
-  ninja type and you've found yourself a bug and have the fix in your fist ready to
-  throw towards me (or if you just have the bug, but not the fix) you can help by popping
-  yourself along to the issues page: http://github.com/remy/testyoursockets/issues
+  If you've got any questions about it, or in fact if you fancy yourself a bit of badass ninja type 
+  and you've found yourself a bug and have the fix in your fist ready to throw towards me (or if you 
+  just have the bug, but not the fix) you can help by popping yourself along to the issues page: 
+  http://github.com/remy/testyoursockets/issues
 
-  If you've got a general bit of cooing that you'd like to send my way, simply pop
-  a tweet along to @rem, no doubt I'll add it to my growing pile of coos. Eventually
-  I aim to build a small canoe made entirely of coos - but that's for another day.
-
+  If you've got a general bit of cooing that you'd like to send my way, simply pop a tweet along to 
+  @rem, no doubt I'll add it to my growing pile of coos. Eventually I aim to build a small canoe made 
+  entirely of coos - but that's for another day.
+  
   Take care now.
 
   - @rem
